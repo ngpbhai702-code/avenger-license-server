@@ -8,7 +8,7 @@
   --blue:#4b8cff;--cyan:#38d9ed;--violet:#8b5cf6;--pink:#ff4f91;--red:#ff5268;--green:#34d399;
 }
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:linear-gradient(90deg,rgba(4,9,25,.24),rgba(4,9,25,.12)),url('apachi-tech-wallpaper.jpg') center center/cover fixed no-repeat,#070d1c}
+body{margin:0;min-height:100vh;background:linear-gradient(90deg,rgba(4,9,25,.24),rgba(4,9,25,.12)),url('avenger-logo-bg.png') center center/cover fixed no-repeat,#070d1c}
 button,input,select{font:inherit}
 button{border:0;border-radius:11px;background:linear-gradient(110deg,#3478f6,#7257ed 58%,#d9468f);color:white;padding:11px 16px;font-weight:750;cursor:pointer;box-shadow:0 8px 22px rgba(65,105,245,.18);transition:transform .18s,filter .18s,box-shadow .18s}
 button:hover{filter:brightness(1.12);transform:translateY(-1px);box-shadow:0 11px 26px rgba(65,105,245,.25)}
@@ -70,15 +70,47 @@ tr:hover td{background:rgba(65,120,220,.06)}
 @media(max-height:760px){.loginbox{margin-top:3vh;margin-bottom:3vh}.loginbox .panel{padding:25px}}
 @media(max-width:620px){.wrap{display:block}.side{width:100%;padding:14px}.brand{margin-bottom:12px}.nav{grid-template-columns:repeat(2,minmax(0,1fr))}.sidefoot{display:none}.main{padding:17px}.grid,.formgrid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.title{font-size:25px}.loginbox{margin-top:5vh}.loginbox .panel{padding:24px}}
 
+
+/* AVENGER PRO neon-green hacker theme */
+:root{
+  color:#eaffea;background:#020704;
+  --panel:#07150b;--line:rgba(57,255,20,.24);--muted:#91b99a;
+  --blue:#39ff14;--cyan:#8cff66;--violet:#18c94a;--pink:#b6ff00;--red:#ff5268;--green:#39ff14;
+}
+body{
+ background:
+ linear-gradient(90deg,rgba(0,5,1,.88),rgba(0,8,2,.76)),
+ url('avenger-logo-bg.png') center center/cover fixed no-repeat,#020704;
+}
+button{background:linear-gradient(110deg,#087a22,#20d640 58%,#8cff00);color:#001b05;box-shadow:0 8px 22px rgba(57,255,20,.18)}
+button:hover{box-shadow:0 11px 26px rgba(57,255,20,.32)}
+.secondary{background:linear-gradient(110deg,#173b20,#245b2d);color:#d9ffdc}
+.nav button.active,.nav button:hover{background:linear-gradient(100deg,rgba(57,255,20,.19),rgba(24,201,74,.13));border-color:rgba(57,255,20,.32);color:#eaffea}
+.logo{background:linear-gradient(135deg,#39ff14,#00a82d 55%,#b6ff00);color:#001b05;box-shadow:0 8px 24px #39ff1455}
+.eyebrow{color:#8cff66}
+.side{background:linear-gradient(180deg,rgba(1,15,5,.98),rgba(0,8,2,.98));border-right-color:rgba(57,255,20,.2)}
+.userpill{background:linear-gradient(135deg,#0b2410,#061209)}
+.card,.panel{background:linear-gradient(145deg,rgba(5,25,10,.96),rgba(4,18,8,.96),rgba(2,12,5,.98));border-color:rgba(57,255,20,.2)}
+.card:before,.card:nth-child(2):before,.card:nth-child(3):before,.card:nth-child(4):before{background:linear-gradient(90deg,#39ff14,#00b83d,#b6ff00)}
+.field input,.field select,input,select{background:#041008;color:#eaffea;border-color:#20572b}
+.field input:focus,.field select:focus,input:focus,select:focus{border-color:#39ff14;box-shadow:0 0 0 3px #39ff1422}
+th{background:#0b2912;color:#caffc9}
+tr:hover td{background:rgba(57,255,20,.055)}
+.notice{border-color:rgba(57,255,20,.25);background:linear-gradient(100deg,rgba(17,105,35,.22),rgba(32,85,12,.16));color:#d7ffd9}
+.loginbox:before{background:radial-gradient(ellipse,rgba(57,255,20,.22),transparent 65%)}
+.loginbox .panel{background:linear-gradient(145deg,rgba(3,22,8,.97),rgba(4,18,7,.97),rgba(2,12,5,.98));border-color:rgba(57,255,20,.3);box-shadow:0 28px 90px #000b,0 0 35px #39ff141c}
+.loginbrand .logo{background:linear-gradient(135deg,#39ff14,#00a82d 55%,#b6ff00);box-shadow:0 0 25px #39ff1466}
+.pill{background:#15351b;color:#caffc9}
+
 </style></head><body>
-<div id="loginView" class="loginbox"><div class="brand loginbrand"><div class="logo">A</div><div>APACHI <span style="color:#4b8cff">PRO</span><div class="muted" style="font-size:11px;font-weight:500;margin-top:3px">LICENSE CONTROL CENTER</div></div></div><div class="panel"><div class="eyebrow">Secure Sign In</div><h1>Admin Panel Login</h1><p class="muted">अपने खाते से लॉगिन करें</p><form id="loginForm"><div class="field"><label>Username</label><input name="username" autocomplete="username" required placeholder="अपना username"></div><div class="field"><label>Password</label><input name="password" type="password" autocomplete="current-password" required placeholder="अपना password"></div>
+<div id="loginView" class="loginbox"><div class="brand loginbrand"><div class="logo">A</div><div>AVENGER <span style="color:#39ff14">PRO</span><div class="muted" style="font-size:11px;font-weight:500;margin-top:3px">LICENSE CONTROL CENTER</div></div></div><div class="panel"><div class="eyebrow">Secure Sign In</div><h1>Admin Panel Login</h1><p class="muted">अपने खाते से लॉगिन करें</p><form id="loginForm"><div class="field"><label>Username</label><input name="username" autocomplete="username" required placeholder="अपना username"></div><div class="field"><label>Password</label><input name="password" type="password" autocomplete="current-password" required placeholder="अपना password"></div>
 <button type="submit">Login to Dashboard</button>
 </form>
 
 <div id="loginMsg" class="toast"></div>
 
 </div></div>
-<div id="appView" class="wrap hidden"><aside class="side"><div class="brand"><div class="logo">A</div><div>APACHI <span style="color:#4b8cff">PRO</span></div></div><div class="nav"><button data-page="dashboard" class="active">▦ &nbsp; Dashboard</button><button data-page="users">♙ &nbsp; Team Users</button><button data-page="licenses">⚿ &nbsp; License Keys</button><button data-page="audit" id="auditNav" class="hidden">◷ &nbsp; Activity Logs</button><button id="logoutBtn" class="secondary">↪ &nbsp; Logout</button></div><div class="sidefoot">AVENGER · License Server</div></aside><main class="main"><div class="top"><div><div class="eyebrow">Control Center / <span id="pageLabel">Overview</span></div><div class="title" id="pageTitle">Dashboard Overview</div><div class="muted" id="pageSub">लाइसेंस और टीम की स्थिति</div></div><div class="userpill"><strong id="whoName">User</strong><div class="muted" id="whoRole" style="font-size:12px;margin-top:3px">Role</div></div></div>
+<div id="appView" class="wrap hidden"><aside class="side"><div class="brand"><div class="logo">A</div><div>AVENGER <span style="color:#39ff14">PRO</span></div></div><div class="nav"><button data-page="dashboard" class="active">▦ &nbsp; Dashboard</button><button data-page="users">♙ &nbsp; Team Users</button><button data-page="licenses">⚿ &nbsp; License Keys</button><button data-page="audit" id="auditNav" class="hidden">◷ &nbsp; Activity Logs</button><button id="logoutBtn" class="secondary">↪ &nbsp; Logout</button></div><div class="sidefoot">AVENGER · License Server</div></aside><main class="main"><div class="top"><div><div class="eyebrow">Control Center / <span id="pageLabel">Overview</span></div><div class="title" id="pageTitle">Dashboard Overview</div><div class="muted" id="pageSub">लाइसेंस और टीम की स्थिति</div></div><div class="userpill"><strong id="whoName">User</strong><div class="muted" id="whoRole" style="font-size:12px;margin-top:3px">Role</div></div></div>
 <section id="page-dashboard"><div class="grid"><div class="card"><div class="label">Total Team Users</div><div class="number" id="countUsers">—</div><small>आपकी hierarchy में</small></div><div class="card"><div class="label">All Licenses</div><div class="number" id="countLicenses">—</div><small>जारी की गई keys</small></div><div class="card"><div class="label">Valid Licenses</div><div class="number" id="countValid">—</div><small>अभी वैध</small></div><div class="card"><div class="label">Expired / Revoked</div><div class="number" id="countInactive">—</div><small>समाप्त या बंद</small></div></div><div class="panel"><h2>आपके अधिकार</h2><p>हर account केवल अपने से नीचे वाले role को बना सकता है। Wallet और commission इस संस्करण में शामिल नहीं हैं।</p><div class="notice">License validity: 30 दिन · Device limit: 1 device · प्रत्येक request में 1 key</div></div></section>
 <section id="page-users" class="hidden"><div class="panel"><h2 id="createUserTitle">Team में नया User बनाएँ</h2><p>आप अपने से नीचे वाले role का account बना सकते हैं।</p><form id="userForm"><div class="formgrid"><div class="field"><label>Display Name</label><input name="displayName" required maxlength="120" placeholder="पूरा नाम"></div><div class="field"><label>Username</label><input name="username" required minlength="4" maxlength="60" pattern="[A-Za-z0-9._-]+" placeholder="unique username"></div><div class="field"><label>Role</label><select name="role" id="newRole" required></select></div><div class="field"><label>Temporary Password (12+ characters)</label><input name="password" required minlength="12" type="password" autocomplete="new-password"></div></div><button type="submit" style="margin-top:14px">+ Create User</button><div id="userMsg" class="toast"></div></form></div><div class="panel"><div class="sectionhead"><div><h2>Team Accounts</h2><p style="margin:5px 0 0">आपके नीचे के सभी accounts</p></div><button class="secondary" id="reloadUsers">Refresh</button></div><div class="tablewrap"><table><thead><tr><th>Name</th><th>Username</th><th>Role</th><th>Tokens</th><th>Status</th><th>Created</th><th>Actions</th></tr></thead><tbody id="usersBody"><tr><td colspan="6">Loading...</td></tr></tbody></table></div></div></section>
 <section id="page-licenses" class="hidden"><div class="panel"><h2>Generate 30-Day License</h2><p>इस सर्वर संस्करण में Customer Name ही License Key बनता है। 4–32 letters/numbers दर्ज करें।</p><form id="licenseForm"><div class="row"><div class="field"><label>License Quantity</label><input name="quantity" type="number" min="1" max="1" value="1" required readonly></div><div class="field"><label>Customer Name / License Key</label><input name="customerName" minlength="4" maxlength="32" pattern="[A-Za-z0-9]+" required placeholder="4–32 letters/numbers"></div><button type="submit">＋ Generate License Keys</button></div><div id="licenseMsg" class="toast"></div><div id="newKeyBox" class="notice hidden"><strong>Generated License Keys:</strong><div id="newKey" style="font-size:14px;font-weight:800;margin:10px 0;white-space:pre-wrap;overflow-wrap:anywhere"></div><div class="row"><button type="button" id="copyKey">Copy All Keys</button><button type="button" id="downloadKey" class="secondary">Download .txt</button></div><div id="tokenResult" style="margin-top:8px"></div><div style="margin-top:8px">Expiry: <span id="newExpiry"></span></div></div></form></div><div class="panel"><div class="sectionhead"><div><h2>License Inventory</h2><p style="margin:5px 0 0">पूरी Key सर्वर पर store नहीं होती; यहाँ masked preview दिखता है।</p></div><button class="secondary" id="reloadLicenses">Refresh</button></div><div class="tablewrap"><table><thead><tr><th>Key Preview</th><th>Owner</th><th>Customer</th><th>Status</th><th>Created</th><th>Expires</th><th>Action</th></tr></thead><tbody id="licensesBody"><tr><td colspan="7">Loading...</td></tr></tbody></table></div></div></section>
