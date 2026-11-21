@@ -154,6 +154,47 @@ app.post('/api/bootstrap-master', rateLimit({ windowMs: 15 * 60 * 1000, limit: 5
   res.status(201).json({ ok: true, user: publicUser(rows[0]), token: signUser(rows[0]), message: 'Master created. Remove BOOTSTRAP_SECRET from the service environment after setup.' });
 }));
 
+// Temporary Master Admin password recovery.
+// Set MASTER_RESET_SECRET in Render before using this route.
+// Remove MASTER_RESET_SECRET from Render and redeploy immediately after recovery.
+app.post('/api/reset-master-password', rateLimit({ windowMs: 15 * 60 * 1000, limit: 5, standardHeaders: true, legacyHeaders: false }), asyncRoute(async (req, res) => {
+  const configuredSecret = String(process.env.MASTER_RESET_SECRET || '');
+  if (configuredSecret.length < 32) return res.status(404).json({ error: 'not_found' });
+
+  const suppliedSecret = String(req.get('x-master-reset-secret') || '');
+  const expected = Buffer.from(configuredSecret.padEnd(64, '\\0').slice(0, 64));
+  const supplied = Buffer.from(suppliedSecret.padEnd(64, '\\0').slice(0, 64));
+  if (suppliedSecret.length !== configuredSecret.length || !crypto.timingSafeEqual(supplied, expected)) {
+    return res.status(403).json({ error: 'reset_forbidden' });
+  }
+
+  const password = String(req.body.password || '');
+  if (password.length < 12 || password.length > 200) return res.status(400).json({ error: 'password_must_be_12_to_200_characters' });
+
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    const found = await client.query("SELECT id, username FROM users WHERE role='master' ORDER BY id ASC LIMIT 1 FOR UPDATE");
+    if (!found.rows[0]) {
+      await client.query('ROLLBACK');
+      return res.status(404).json({ error: 'master_account_not_found' });
+    }
+    const passwordHash = await bcrypt.hash(password, 12);
+    await client.query('UPDATE users SET password_hash=$1 WHERE id=$2', [passwordHash, found.rows[0].id]);
+    await client.query(
+      'INSERT INTO audit_logs(actor_id,action,target_type,target_id,details) VALUES($1,$2,$3,$4,$5)',
+      [found.rows[0].id, 'master_password_reset', 'user', String(found.rows[0].id), JSON.stringify({ username: found.rows[0].username })]
+    );
+    await client.query('COMMIT');
+    res.json({ ok: true, message: 'Master password reset. Remove MASTER_RESET_SECRET from Render and redeploy now.' });
+  } catch (error) {
+    await client.query('ROLLBACK').catch(() => {});
+    throw error;
+  } finally {
+    client.release();
+  }
+}));
+
 app.post('/api/login', rateLimit({ windowMs: 15 * 60 * 1000, limit: 12, standardHeaders: true, legacyHeaders: false }), asyncRoute(async (req, res) => {
   const username = String(req.body.username || '').trim().toLowerCase();
   const password = String(req.body.password || '');
